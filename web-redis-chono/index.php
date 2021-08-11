@@ -46,10 +46,10 @@ function test_input($data) {
 <h2>PHP Form Validation Example</h2>
 <p><span class="error">* required field</span></p>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
-  Name: <input type="text" name="name" value="<?php echo $name;?>">
+  Name: <input type="text" name="name" value="">
   <span class="error">* <?php echo $nameErr;?></span>
   <br><br>
-  E-mail: <input type="text" name="email" value="<?php echo $email;?>">
+  E-mail: <input type="text" name="email" value="">
   <span class="error">* <?php echo $emailErr;?></span>
   <br><br>
   <input type="submit" name="submit" value="Submit">  
@@ -75,12 +75,16 @@ Predis\Autoloader::register();
    $value = $client->get("account");
    if(empty($value)){
    $client->set("account", $name.' '.$email);
+   echo $name.' '.$email;
    }else{
-    $newvalue = $value.' '.$name.' '.$email;
+    $newvalue = $value.', '.$name.' '.$email;
     $client->set("account", $newvalue);
+    $iparr = split (",", $newvalue);
+    foreach ($iparr as &$val) {
+     echo $val;
+    }
    }
    
-echo $newvalue;
 #echo "<h2>Your Input:</h2>";
 #echo $name;
 #echo "<br>";
