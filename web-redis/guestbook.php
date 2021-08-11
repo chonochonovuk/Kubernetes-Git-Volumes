@@ -20,7 +20,7 @@ if (isset($_GET['cmd']) === true) {
     $client->set($_GET['key'], $_GET['value']);
     print('{"message": "Updated"}');
   } else {
-    $host = 'redis-master';
+    $host = 'redis-host';
     $client = new Predis\Client([
       'scheme' => 'tcp',
       'host'   => $host,
