@@ -82,6 +82,7 @@ Predis\Autoloader::register();
     $iparr = explode (",", $newvalue);
     foreach ($iparr as &$val) {
      echo $val;
+     echo "<br>";
     }
    }
    
