@@ -72,16 +72,9 @@ Predis\Autoloader::register();
       'port'   => 6379,
     ]);
   
-  if ($client->exist("account") {
-  
    $value = $client->get("account");
-   
    $value += $name.' '.$email;
    $client->set("account", $value);
-   print($value." ");
-  } else {
-    $client->set("account", $name.' '.$email);
-  }
   
 #echo "<h2>Your Input:</h2>";
 #echo $name;
