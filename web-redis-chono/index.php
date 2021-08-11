@@ -74,7 +74,6 @@ Predis\Autoloader::register();
   
    $value = $client->get("account");
    echo "<h2>Your Input:</h2>";
-   echo "<br>";
    if(empty($value)){
    $client->set("account", $name.' '.$email);
    echo $name.' '.$email;
