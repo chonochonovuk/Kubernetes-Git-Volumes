@@ -79,7 +79,7 @@ Predis\Autoloader::register();
    }else{
     $newvalue = $value.', '.$name.' '.$email;
     $client->set("account", $newvalue);
-    $iparr = split (",", $newvalue);
+    $iparr = explode (",", $newvalue);
     foreach ($iparr as &$val) {
      echo $val;
     }
