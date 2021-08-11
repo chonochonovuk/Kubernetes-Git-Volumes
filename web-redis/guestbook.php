@@ -8,7 +8,7 @@ require 'Predis/Autoloader.php';
 Predis\Autoloader::register();
 
 if (isset($_GET['cmd']) === true) {
-  $host = 'redis-master';
+  $host = 'redis-host';
   header('Content-Type: application/json');
   if ($_GET['cmd'] == 'set') {
     $client = new Predis\Client([
