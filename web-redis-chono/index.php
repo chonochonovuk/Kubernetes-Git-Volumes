@@ -72,8 +72,10 @@ Predis\Autoloader::register();
       'port'   => 6379,
     ]);
   
+   $value = $client->get("account");
+   if(empty($value)){
    $client->set("account", $name.' '.$email);
-  
+   }
 #echo "<h2>Your Input:</h2>";
 #echo $name;
 #echo "<br>";
