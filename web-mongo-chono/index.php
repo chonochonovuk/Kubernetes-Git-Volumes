@@ -13,7 +13,9 @@ $nameErr = $emailErr = "";
 $name = $email = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+  
+   $guests = array();
+  
   if (empty($_POST["name"])) {
     $nameErr = "Name is required";
   } else {
@@ -21,6 +23,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // check if name only contains letters and whitespace
     if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
       $nameErr = "Only letters and white space allowed";
+    } else {
+       
+      $guests['name'] = $name;
+  
     }
   }
   
@@ -31,7 +37,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // check if e-mail address is well-formed
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $emailErr = "Invalid email format";
+    } else {
+      $guests['email'] = $email;
     }
+  }
+  
+  if(empty($guests) == false){
+   $host = 'mongo-host';
+
+   $connection = new MongoClient( "mongodb://".$host.":27017" );
+
+   $db = $connection->selectDB('hotel');
+
+   $collection = $db->selectCollection('guestbook');
+    
+   $collection->insert($guests);
   }
 }
 
@@ -67,19 +87,18 @@ ini_set('display_errors', 1);
   $db = $connection->selectDB('hotel');
 
   $collection = $db->selectCollection('guestbook');
-  $guests = array();
-  $guests['name'] = $name;
-  $guests['email'] = $email;
-  $collection->insert($guests);
 
    echo "<h2>Your Input:</h2>";
     
     $iparr = $collection->find();
+    
+    if(empty($iparr) == false){
     foreach ($iparr as $val) {
      echo 'Guest name: ' - $val['name'];
      echo "<br>";
      echo 'Guest email: ' - $val['email'];
      echo "<br>";
+    }
     }
   
    
