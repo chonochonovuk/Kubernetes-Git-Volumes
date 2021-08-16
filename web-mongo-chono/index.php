@@ -70,7 +70,7 @@ ini_set('display_errors', 1);
   $guests = array();
   $guests['name'] = $name;
   $guests['email'] = $email;
-  $db->create($collection, $guests);
+  $collection->insert($guests);
 
    echo "<h2>Your Input:</h2>";
     
