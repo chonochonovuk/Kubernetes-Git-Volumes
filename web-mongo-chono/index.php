@@ -76,8 +76,9 @@ ini_set('display_errors', 1);
     
     $iparr = $collection->find();
     foreach ($iparr as $val) {
-     echo $val['name'];
-     echo $val['email'];
+     echo 'Guest name: ' - $val['name'];
+     echo "<br>";
+     echo 'Guest email: ' - $val['email'];
      echo "<br>";
     }
   
