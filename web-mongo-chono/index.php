@@ -63,7 +63,7 @@ function test_input($data) {
 }
 ?>
 
-<h2>PHP Redis Guestbook with name and email. </h2>
+<h2>PHP Mongo Guestbook with name and email. </h2>
 <p><span class="error">* required field</span></p>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  
   Name: <input type="text" name="name" value="">
