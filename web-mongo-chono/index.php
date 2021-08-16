@@ -94,9 +94,9 @@ ini_set('display_errors', 1);
     
     if(empty($iparr) == false){
     foreach ($iparr as $val) {
-     echo 'Guest name: ' - $val['name'];
+     echo 'Guest name: '.$val['name'];
      echo "<br>";
-     echo 'Guest email: ' - $val['email'];
+     echo 'Guest email: '.$val['email'];
      echo "<br>";
     }
     }
